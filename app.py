@@ -14,7 +14,7 @@ DEBUG_MODE = os.getenv('DEBUG', 'True').lower() == 'true'
 app = Flask(__name__)
 
 # CORS configuration for a specific frontend domain
-CORS(app, resources={r"/*": {"origins": "https://dev.d2ja1oqjsjxh9q.amplifyapp.com"}})
+CORS(app, resources={r"/*": {"origins": "https://main.d3mwc4763exqfp.amplifyapp.com/"}})
 
 
 # Initialize SQLite database
