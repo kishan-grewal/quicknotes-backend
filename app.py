@@ -12,7 +12,10 @@ DB_NAME = os.getenv('DB_NAME', 'notes.db')  # Default to 'notes.db' if not speci
 DEBUG_MODE = os.getenv('DEBUG', 'True').lower() == 'true'
 
 app = Flask(__name__)
-CORS(app)  # Allow cross-origin requests (for React frontend)
+
+# CORS configuration for a specific frontend domain
+CORS(app, resources={r"/*": {"origins": "https://dev.d2ja1oqjsjxh9q.amplifyapp.com"}})
+
 
 # Initialize SQLite database
 def init_db():
@@ -93,4 +96,3 @@ def delete_note(note_id):
 
 if __name__ == '__main__':
     app.run()
-
