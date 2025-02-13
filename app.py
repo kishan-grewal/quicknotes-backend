@@ -14,8 +14,7 @@ DEBUG_MODE = os.getenv('DEBUG', 'True').lower() == 'true'
 app = Flask(__name__)
 
 # CORS configuration for a specific frontend domain
-CORS(app, resources={r"/*": {"origins": "https://main.d3mwc4763exqfp.amplifyapp.com/"}})
-
+CORS(app, resources={r"/*": {"origins": "https://main.d3mw4763exqfp.amplifyapp.com"}})
 
 # Initialize SQLite database
 def init_db():
@@ -35,11 +34,6 @@ init_db()  # Create the database when the app starts
 # Utility function to connect to the database
 def get_db_connection():
     return sqlite3.connect(DB_NAME)
-
-# Root route for testing
-@app.route("/", methods=['GET'])
-def home():
-    return jsonify({"message": "Welcome to the QuickNotes Backend!"})
 
 # Route to get all notes
 @app.route('/api/notes', methods=['GET'])
@@ -95,4 +89,4 @@ def delete_note(note_id):
     return jsonify({"message": "Note deleted"}), 200
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
